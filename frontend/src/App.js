@@ -1,29 +1,23 @@
 import React from "react";
-import { createBrowserHistory } from "history";
-import { Router, Route, Switch } from "react-router-dom";
+// import { createBrowserHistory } from "history";
+// import { Router, Route, Switch } from "react-router-dom";
 
 import "assets/scss/material-kit-react.scss?v=1.8.0";
+import LogInContainer from './containers/LogInContainer'
 
 // pages for this product
-import Components from "views/Components/Components.js";
-import LandingPage from "views/LandingPage/LandingPage.js";
-import ProfilePage from "views/ProfilePage/ProfilePage.js";
-import LoginPage from "views/LoginPage/LoginPage.js";
+// import Components from "views/Components/Components.js";
+// import LandingPage from "views/LandingPage/LandingPage.js";
+// import ProfilePage from "views/ProfilePage/ProfilePage.js";
+// import LoginPage from "views/LoginPage/LoginPage.js";
 
-const hist = createBrowserHistory();
+// const history = createBrowserHistory();
 
 export default class App extends React.Component {
 
   render() {
     return(
-      <Router history={hist}>
-        <Switch>
-          <Route path="/landing-page" component={LandingPage} />
-          <Route path="/profile-page" component={ProfilePage} />
-          <Route path="/login-page" component={LoginPage} />
-          <Route path="/" component={Components} />
-        </Switch>
-      </Router>
+      <LogInContainer />
     )
   }
 }
@@ -35,3 +29,13 @@ export default class App extends React.Component {
 // }
 //
 // export default connect(mapStateToProps)(App)
+
+
+// <Router history={history}>
+//   <Switch>
+//     <Route path="/landing-page" component={LandingPage} />
+//     <Route path="/profile-page" component={ProfilePage} />
+//     <Route path="/login-page" component={LoginPage} />
+//     <Route path="/" component={Components} />
+//   </Switch>
+// </Router>
