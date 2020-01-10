@@ -1,3 +1,12 @@
 import React from 'react'
 
-export default LogInContainer
+export default class LogInContainer extends React.Component {
+
+
+  render() {
+    return(
+
+    )
+  }
+
+}
