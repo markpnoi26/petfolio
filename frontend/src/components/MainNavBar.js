@@ -8,6 +8,8 @@ import ListItem from "@material-ui/core/ListItem";
 import Header from "components/Header/Header.js";
 import Button from "components/CustomButtons/Button.js";
 
+import {Link} from 'react-router-dom'
+
 import styles from "assets/jss/material-kit-react/views/componentsSections/navbarsStyle.js";
 
 class MainNavBar extends React.Component {
@@ -33,34 +35,31 @@ class MainNavBar extends React.Component {
           leftLinks={
             <List className={classes.list}>
               <ListItem className={classes.listItem}>
-                <Button
-                  href="#url-goes-here"
+                <Link
+                  to="/"
                   className={classes.navLink}
-                  onClick={e => e.preventDefault()}
                   color="transparent"
                 >
                   Home
-                </Button>
+                </Link>
               </ListItem>
               <ListItem className={classes.listItem}>
-                <Button
-                  href="#url-goes-here"
+                <Link
+                  to="/users"
                   className={classes.navLink}
-                  onClick={e => e.preventDefault()}
                   color="transparent"
                 >
                   Owners
-                </Button>
+                </Link>
               </ListItem>
               <ListItem className={classes.listItem}>
-                <Button
-                  href="#url-goes-here"
+                <Link
+                  to="/pets"
                   className={classes.navLink}
-                  onClick={e => e.preventDefault()}
                   color="transparent"
                 >
-                  Pets
-                </Button>
+                    Pets
+                </Link>
               </ListItem>
             </List>
           }

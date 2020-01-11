@@ -11,7 +11,7 @@
 User.create(email: "admin", password: "admin", name: "admin", current_address: "1142 Admin Building St. Admin, ST 12345", about_me: Faker::Lorem.sentence(word_count: 10))
 
 5.times {
-  User.create(email: Faker::Internet.email, password: "password", name: Faker::Name.unique.name, current_address: Faker::Address.full_address, about_me: Faker::Lorem.sentence(word_count: 10))
+  User.create(email: Faker::Internet.email, password: "password", name: Faker::Name.unique.name, current_address: Faker::Address.full_address, about_me: Faker::Lorem.sentence(word_count: 50))
 }
 
 
