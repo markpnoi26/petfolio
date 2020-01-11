@@ -1,50 +1,108 @@
-import React from 'react'
+import React from "react";
+// @material-ui/core components
+import { withStyles } from "@material-ui/core/styles";
+import Icon from "@material-ui/core/Icon";
+// @material-ui/icons
+import Email from "@material-ui/icons/Email";
+import InputAdornment from "@material-ui/core/InputAdornment";
+// core components
+import Header from "components/Header/Header.js";
+import CustomInput from "components/CustomInput/CustomInput.js";
+import Button from "components/CustomButtons/Button.js";
 
-export default class LogInCard extends React.Component {
+import styles from "assets/jss/material-kit-react/views/componentsSections/navbarsStyle.js";
+
+class LogInCard extends React.Component {
 
   constructor() {
-    super()
-    this.state = {
-      email: "",
-      password: ""
-    }
-  }
+     super()
+     this.state = {
+       email: "",
+       password: ""
+     }
+   }
 
-  emailOnChangeHandler = event => {
-    // console.log(event.target.value)
-    this.setState({
-      email: event.target.value
-    })
-  }
+   emailOnChangeHandler = event => {
+     console.log(event.target.value)
+     this.setState({
+       email: event.target.value
+     })
+   }
 
-  passwordOnChangeHandler = event => {
-    // console.log(event.target.value)
-    this.setState({
-      password: event.target.value
-    })
-  }
+   passwordOnChangeHandler = event => {
+     console.log(event.target.value)
+     this.setState({
+       password: event.target.value
+     })
+   }
 
-  onSubmitHandler = event => {
-    event.preventDefault()
-    console.log("Logging In")
-    // call dispatch to log in
-    this.setState({
-      email: "",
-      password: ""
-    })
-  }
+   onClickHandler = event => {
+     event.preventDefault()
+     console.log("Logging In")
+     // call dispatch to log in
+     this.setState({
+       email: "",
+       password: ""
+     })
+   }
 
   render() {
-    return(
-      <form onSubmit={this.onSubmitHandler}>
-        email:
-        <input type="text" value={this.state.email} onChange={this.emailOnChangeHandler}/>
-        <br/>
-        password:
-        <input type="password" value={this.state.password} onChange={this.passwordOnChangeHandler}/>
-        <br/>
-        <input type="submit"/>
-      </form>
-    )
+    const {classes} = this.props
+    return (
+      <div id="navbar" className={classes.navbar}>
+        <Header
+          brand="Welcome to PetFolio"
+          color="info"
+          rightLinks={
+            <div>
+              <CustomInput
+                white
+                formControlProps={{
+                  className: classes.formControl
+                }}
+                inputProps={{
+                  onChange: this.emailOnChangeHandler,
+                  value: this.state.email,
+                  placeholder: "Email",
+                  type: "text",
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <Email className={classes.inputIconsColor} />
+                    </InputAdornment>
+                  ),
+                  autoComplete: "off"
+                }}
+              />
+              <CustomInput
+                white
+                formControlProps={{
+                  className: classes.formControl
+                }}
+                inputProps={{
+                  onChange: this.passwordOnChangeHandler,
+                  value: this.state.password,
+                  placeholder: "Password",
+                  type: "password",
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <Icon className={classes.inputIconsColor}>
+                        lock_outline
+                      </Icon>
+                    </InputAdornment>
+                  ),
+                  autoComplete: "off"
+                }}
+              />
+              <Button onClick={this.onClickHandler}round color="primary">
+                Log In
+              </Button>
+            </div>
+          }
+        />
+      </div>
+    );
   }
 }
+
+
+export default withStyles(styles)(LogInCard)
