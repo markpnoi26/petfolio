@@ -1,16 +1,25 @@
 import React from 'react'
 import LogInCard from '../components/LogInCard'
 import SignUpCard from '../components/SignUpCard'
+import {connect} from 'react-redux'
 
-export default class LogInContainer extends React.Component {
+class LogInContainer extends React.Component {
 
   render() {
     return(
       <div>
-        <LogInCard />
-        <SignUpCard />
+        <LogInCard logIn={this.props.logIn} />
+        <SignUpCard logIn={this.props.logIn} />
       </div>
     )
   }
 
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logIn: () => dispatch({type: "LOG_IN"})
+  }
+}
+
+export default connect(null, mapDispatchToProps)(LogInContainer)

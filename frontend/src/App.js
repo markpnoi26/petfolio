@@ -1,41 +1,34 @@
 import React from "react";
-// import { createBrowserHistory } from "history";
-// import { Router, Route, Switch } from "react-router-dom";
+import {connect} from 'react-redux'
 
 import "assets/scss/material-kit-react.scss?v=1.8.0";
 import LogInContainer from './containers/LogInContainer'
+import ApplicationContainer from './containers/ApplicationContainer'
 
-// pages for this product
-// import Components from "views/Components/Components.js";
-// import LandingPage from "views/LandingPage/LandingPage.js";
-// import ProfilePage from "views/ProfilePage/ProfilePage.js";
-// import LoginPage from "views/LoginPage/LoginPage.js";
 
-// const history = createBrowserHistory();
+class App extends React.Component {
 
-export default class App extends React.Component {
+  renderContainer() {
+    if (this.props.currentlyLoggedIn) {
+      return <ApplicationContainer />
+    } else {
+      return <LogInContainer />
+    }
+  }
 
   render() {
     return(
-      <LogInContainer />
+      <React.Fragment>
+        {this.renderContainer()}
+      </React.Fragment>
     )
   }
 }
 
-// const mapStateToProps = state => {
-//   return{
-//     currentlyLoggedIn: state.currentlyLoggedIn
-//   }
-// }
-//
-// export default connect(mapStateToProps)(App)
+const mapStateToProps = state => {
+  return{
+    currentlyLoggedIn: state.currentlyLoggedIn
+  }
+}
 
-
-// <Router history={history}>
-//   <Switch>
-//     <Route path="/landing-page" component={LandingPage} />
-//     <Route path="/profile-page" component={ProfilePage} />
-//     <Route path="/login-page" component={LoginPage} />
-//     <Route path="/" component={Components} />
-//   </Switch>
-// </Router>
+export default connect(mapStateToProps)(App)

@@ -59,8 +59,9 @@ class SignUpCard extends React.Component {
   }
 
   signUpClick = () => {
-    console.log("signing you up redirecting...")
-    //dispatch call to add account and log in
+    if (this.state.name === "admin" && this.state.email === "admin" && this.state.password === "admin" && this.state.passwordConfirm === "admin") {
+      this.props.logIn()
+    }
     this.setState({
       name: "",
       email: "",

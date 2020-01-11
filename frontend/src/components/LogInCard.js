@@ -38,8 +38,9 @@ class LogInCard extends React.Component {
 
    onClickHandler = event => {
      event.preventDefault()
-     console.log("Logging In")
-     // call dispatch to log in
+     if (this.state.email === "admin" && this.state.password === "admin") {
+      this.props.logIn()
+     }
      this.setState({
        email: "",
        password: ""
