@@ -12,10 +12,6 @@ import stylesB from "assets/jss/material-kit-react/views/profilePage.js";
 
 class AllOwnersCard extends React.Component {
 
-  componentDidMount() {
-    // console.log(this.props)
-  }
-
   renderGridItems() {
     return (
       this.props.users.map(user => {

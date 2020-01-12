@@ -35,10 +35,8 @@ const useStyles = makeStyles(combinedStyles)
 
 
 export default function OwnerPage(props) {
-  console.log(props)
 
   const classes = useStyles();
-
   const imageClasses = classNames(
     classes.imgRaised,
     classes.imgRoundedCircle,

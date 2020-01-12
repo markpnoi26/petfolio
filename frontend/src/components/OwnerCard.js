@@ -5,7 +5,6 @@ import { makeStyles } from "@material-ui/core/styles";
 // core components
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
-import CardHeader from "components/Card/CardHeader.js";
 import Button from "components/CustomButtons/Button.js";
 
 import { cardTitle } from "assets/jss/material-kit-react.js";
@@ -19,7 +18,6 @@ const useStyles = makeStyles(styles);
 export default function OwnerCard(props) {
   const classes = useStyles();
 
-  console.log(props)
   return (
     <Card style={{width: "20rem"}}>
       <CardBody>
