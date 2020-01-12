@@ -85,11 +85,11 @@ class SignUpCard extends React.Component {
           style={{
             backgroundImage: "url(" + image + ")",
             backgroundSize: "cover",
-            backgroundPosition: "left center"
+            backgroundPosition: "right center"
           }}
         >
           <div className={classes.container}>
-            <GridContainer justify="flex-start">
+            <GridContainer justify="flex-end">
               <GridItem xs={12} sm={12} md={4}>
                 <Card id="login-card" className={this.state.cardAnimation}>
                   <form className={classes.form}>
