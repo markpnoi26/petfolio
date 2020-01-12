@@ -8,6 +8,8 @@ import ApplicationContainer from './containers/ApplicationContainer'
 
 class App extends React.Component {
 
+
+
   renderContainer() {
     if (this.props.currentlyLoggedIn) {
       return <ApplicationContainer />

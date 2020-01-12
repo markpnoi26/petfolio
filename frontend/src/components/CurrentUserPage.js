@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import {Link} from 'react-router-dom'
 import combineStyles from 'assets/combine-function/combineStyles'
 // @material-ui/core components
 import { withStyles } from "@material-ui/core/styles";
@@ -8,24 +9,65 @@ import { withStyles } from "@material-ui/core/styles";
 import Face from "@material-ui/icons/Face";
 import Explore from "@material-ui/icons/Explore";
 import Pets from "@material-ui/icons/Pets";
-import Chat from "@material-ui/icons/Chat";
 import Build from "@material-ui/icons/Build";
+import Close from "@material-ui/icons/Close";
+import Add from "@material-ui/icons/Add";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import CustomTabs from "components/CustomTabs/CustomTabs.js";
 import Parallax from "components/Parallax/Parallax.js";
+import CustomInput from "components/CustomInput/CustomInput.js";
+import Button from "components/CustomButtons/Button.js";
 
 import profile from "assets/img/admin.jpg";
 
 import stylesA from "assets/jss/material-kit-react/views/componentsSections/tabsStyle.js";
 import stylesB from "assets/jss/material-kit-react/views/profilePage.js";
 
+// async-actions
+
 
 class CurrentUserPage extends React.Component {
 
+  constructor(props) {
+    super(props)
+    const {currentUser} = props
+    this.state={
+      about_me: props.currentUser.about_me,
+      current_address: props.currentUser.current_address,
+    }
+  }
+
+  aboutMeChange = event => {
+    this.setState({
+      about_me: event.target.value
+    })
+  }
+
+  addressChange = event => {
+    this.setState({
+      current_address: event.target.value
+    })
+  }
+
+  onClickHandler = (user_id) => {
+    alert("You have Added a Pet!")
+    this.props.addPet(user_id)
+  }
+
+  submitHandler = (event) => {
+    event.preventDefault()
+    //call dispatch to asynchronously change the data
+  }
+
+  deletePet = (id) => {
+    this.props.deletePet(id)
+  }
+
   render() {
     const {classes} = this.props;
+
     const imageClasses = classNames(
       classes.imgRaised,
       classes.imgRoundedCircle,
@@ -87,18 +129,69 @@ class CurrentUserPage extends React.Component {
                       tabName: "Pets",
                       tabIcon: Pets,
                       tabContent: (
-                        <p className={classes.textCenter}>
-                          {this.props.currentUser.about_me}
-                        </p>
+                        <ul className={classes.textCenter}>
+                          {this.props.currentUser.pets.map(pet => {
+                            return(
+                              <div key={pet.id} className={classes.container}>
+                                <GridContainer justify="flex-start">
+                                  <GridItem>
+                                    <Link to={`/pets/${pet.id}`}>
+                                      <h5>
+                                        Name: <strong> {pet.name} </strong> - Breed: <strong> {pet.animal_type} </strong>
+                                      </h5>
+                                    </Link>
+                                  </GridItem>
+                                  <GridItem>
+                                    <Button onClick={() => this.deletePet(pet.id)} justIcon round><Close style={{color: "#FFFFFF"}}/></Button>
+                                  </GridItem>
+                                </GridContainer>
+                              </div>
+                            )
+                          })}
+                        </ul>
+                      )
+                    },
+                    {
+                      tabName: "Add Pet",
+                      tabIcon: Add,
+                      tabContent: (
+                        <ul className={classes.textCenter}>
+                          <Button onClick={() => this.onClickHandler(this.props.currentUser.id)} round color='primary'>Add Random Pet</Button>
+                        </ul>
                       )
                     },
                     {
                       tabName: "Edit Profile",
                       tabIcon: Build,
                       tabContent: (
-                        <p className={classes.textCenter}>
-                          Need some items to Edit profile
-                        </p>
+                        <div>
+                          <CustomInput
+                            labelText="About Me"
+                            id="message"
+                            formControlProps={{
+                              fullWidth: true,
+                              className: classes.textArea
+                            }}
+                            inputProps={{
+                              value: this.state.about_me,
+                              onChange: this.aboutMeChange,
+                              multiline: true,
+                              rows: 5
+                            }}
+                          />
+                          <CustomInput
+                            labelText="Address"
+                            id="address"
+                            formControlProps={{
+                              fullWidth: true
+                            }}
+                            inputProps={{
+                              onChange: this.addressChange,
+                              value: this.state.current_address
+                            }}
+                          />
+                          <Button onClick={this.submitHandler} round color='primary'>Submit Changes</Button>
+                        </div>
                       )
                     }
                   ]}

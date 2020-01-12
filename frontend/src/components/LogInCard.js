@@ -23,14 +23,12 @@ class LogInCard extends React.Component {
    }
 
    emailOnChangeHandler = event => {
-     console.log(event.target.value)
      this.setState({
        email: event.target.value
      })
    }
 
    passwordOnChangeHandler = event => {
-     console.log(event.target.value)
      this.setState({
        password: event.target.value
      })
@@ -39,13 +37,15 @@ class LogInCard extends React.Component {
    onClickHandler = event => {
      event.preventDefault()
      if (this.state.email === "admin" && this.state.password === "admin") {
-      this.props.logIn()
+      this.props.getCurrentUser()
      }
      this.setState({
        email: "",
        password: ""
      })
    }
+
+   
 
   render() {
     const {classes} = this.props

@@ -1,4 +1,4 @@
-export default function currentlyLoggedIn(state = true, action) {
+export default function currentlyLoggedIn(state = false, action) {
   switch(action.type) {
     case 'LOG_IN':
       return true

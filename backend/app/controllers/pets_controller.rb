@@ -11,19 +11,18 @@ class PetsController < ApplicationController
   end
 
   def create
-    pet = Pet.new(pet_params)
-    if pet.valid?
-      pet.save
-      render json: pet, include: [:user]
-    else
-      render json: {error: "Pet cannot be created"}
-    end
+    # puts(params)
+    pet = Pet.create(name: Faker::Name.first_name, age: Faker::Number.number(digits: 1), animal_type: Faker::Creature::Dog.breed, pet_care: Faker::Lorem.sentence(word_count: 50), user_id: params[:user_id])
+
+    render json: pet
   end
 
-  def update
+  def destroy
+    puts(params)
     pet = Pet.find_by_id(params[:id])
-    pet.update(pet_params)
-    render json: pet, include: [:user]
+    pet.destroy
+
+    render json: Pet.all, include: [:user]
   end
 
   private

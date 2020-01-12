@@ -3,12 +3,15 @@ import LogInCard from '../components/LogInCard'
 import SignUpCard from '../components/SignUpCard'
 import {connect} from 'react-redux'
 
+// async-actions
+import getCurrentUser from "async-actions/getCurrentUser"
+
 class LogInContainer extends React.Component {
 
   render() {
     return(
       <div>
-        <LogInCard logIn={this.props.logIn} />
+        <LogInCard {...this.props}/>
         <SignUpCard logIn={this.props.logIn} />
       </div>
     )
@@ -18,7 +21,8 @@ class LogInContainer extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    logIn: () => dispatch({type: "LOG_IN"})
+    getCurrentUser: () => dispatch(getCurrentUser())
+
   }
 }
 
