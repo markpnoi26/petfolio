@@ -21,9 +21,11 @@ class UsersController < ApplicationController
   end
 
   def update
+    # puts(params)
     user = User.find_by_id(params[:id])
-    user.update(user_params)
-    render json: user, include: [:pets]
+    user.update(current_address: params[:current_address], about_me: params[:about_me])
+    user.save
+    render json: user, except: [:name, :email, :password_digest, :created_at, :updated_at]
   end
 
   private

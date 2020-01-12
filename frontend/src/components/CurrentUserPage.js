@@ -32,7 +32,6 @@ class CurrentUserPage extends React.Component {
 
   constructor(props) {
     super(props)
-    const {currentUser} = props
     this.state={
       about_me: props.currentUser.about_me,
       current_address: props.currentUser.current_address,
@@ -56,9 +55,9 @@ class CurrentUserPage extends React.Component {
     this.props.addPet(user_id)
   }
 
-  submitHandler = (event) => {
-    event.preventDefault()
-    //call dispatch to asynchronously change the data
+  submitHandler = (user_id) => {
+    alert("Your profile has been updated")
+    this.props.updateUser(user_id, this.state)
   }
 
   deletePet = (id) => {
@@ -190,7 +189,7 @@ class CurrentUserPage extends React.Component {
                               value: this.state.current_address
                             }}
                           />
-                          <Button onClick={this.submitHandler} round color='primary'>Submit Changes</Button>
+                          <Button onClick={() => this.submitHandler(this.props.currentUser.id)} round color='primary'>Submit Changes</Button>
                         </div>
                       )
                     }

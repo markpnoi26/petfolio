@@ -6,7 +6,6 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 import MainNavBar from '../components/MainNavBar'
 import AllOwnersCard from '../components/AllOwnersCard'
 import AllPetsCard from '../components/AllPetsCard'
-import CurrentPetPage from '../components/CurrentPetPage'
 import CurrentUserPage from '../components/CurrentUserPage'
 
 // async actions
@@ -14,6 +13,7 @@ import getAllPets from '../async-actions/getAllPets'
 import getAllUsers from '../async-actions/getAllUsers'
 import deletePet from '../async-actions/deletePet'
 import addPet from '../async-actions/addPet'
+import updateUser from '../async-actions/updateUser'
 
 class ApplicationContainer extends React.Component {
 
@@ -33,6 +33,7 @@ class ApplicationContainer extends React.Component {
                 currentUser={this.props.currentUser}
                 addPet={this.props.addPet}
                 deletePet={this.props.deletePet}
+                updateUser={this.props.updateUser}
               />
             )
           }} />
@@ -52,6 +53,7 @@ class ApplicationContainer extends React.Component {
 const mapDispatchToProps = dispatch => {
   return {
     logOut: () => dispatch({type: "LOG_OUT"}),
+    updateUser: (user_id, formData) => dispatch(updateUser(user_id, formData)),
     addPet: user_id => dispatch(addPet(user_id)),
     deletePet: id => dispatch(deletePet(id)),
     getAllUsers: () => dispatch(getAllUsers()),
