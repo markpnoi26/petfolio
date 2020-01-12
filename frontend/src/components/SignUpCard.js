@@ -18,7 +18,7 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
-import image from "assets/img/dog.jpg";
+import image from "assets/img/dog4.jpg";
 
 class SignUpCard extends React.Component {
 
@@ -71,7 +71,7 @@ class SignUpCard extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({cardAnimation: ""}), 700)
+    setTimeout(() => this.setState({cardAnimation: ""}), 1500)
   }
 
   render() {
@@ -85,7 +85,7 @@ class SignUpCard extends React.Component {
           style={{
             backgroundImage: "url(" + image + ")",
             backgroundSize: "cover",
-            backgroundPosition: "top center"
+            backgroundPosition: "left center"
           }}
         >
           <div className={classes.container}>

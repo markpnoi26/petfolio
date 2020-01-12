@@ -8,6 +8,7 @@ import AllOwnersCard from '../components/AllOwnersCard'
 import AllPetsCard from '../components/AllPetsCard'
 import CurrentUserPage from '../components/CurrentUserPage'
 import OwnerPage from '../components/OwnerPage'
+import PetPage from '../components/PetPage'
 
 // async actions
 import getAllPets from '../async-actions/getAllPets'
@@ -43,7 +44,9 @@ class ApplicationContainer extends React.Component {
 
           <Route exact path="/users/:id" render={ routerProps => <OwnerPage {...routerProps} users={this.props.allUsers}/>} />
 
-          <Route exact path="/pets" render={routerProps => <AllPetsCard {...routerProps}/>} />
+          <Route exact path="/pets" render={routerProps => <AllPetsCard {...routerProps} pets={this.props.allPets}/>} />
+
+          <Route exact path="/pets/:id" render={routerProps => <PetPage {...routerProps} pets={this.props.allPets}/>} />
 
         </div>
       </Router>

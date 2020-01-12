@@ -16,7 +16,16 @@ import GridItem from "components/Grid/GridItem.js";
 import CustomTabs from "components/CustomTabs/CustomTabs.js";
 import Parallax from "components/Parallax/Parallax.js";
 
-import profile from "assets/img/admin.jpg";
+import profile1 from "assets/img/faces/face1.jpg";
+import profile2 from "assets/img/faces/face2.jpg";
+import profile3 from "assets/img/faces/face3.jpg";
+import profile4 from "assets/img/faces/face4.jpg";
+import profile5 from "assets/img/faces/face5.jpg";
+import profile6 from "assets/img/faces/face6.jpg";
+import profile7 from "assets/img/faces/face7.jpg";
+import profile8 from "assets/img/faces/face8.jpg";
+import profile9 from "assets/img/faces/face9.jpg";
+import profile10 from "assets/img/faces/face10.jpg";
 
 import stylesA from "assets/jss/material-kit-react/views/componentsSections/tabsStyle.js";
 import stylesB from "assets/jss/material-kit-react/views/profilePage.js";
@@ -40,17 +49,18 @@ export default function OwnerPage(props) {
   const matchedUser = props.users.find(user => user.id === parseInt(matchId, 10) )
   console.log(matchedUser)
 
+  const profile = [profile1, profile2, profile3, profile4, profile5, profile6, profile7, profile8, profile9, profile10]
 
   if (matchedUser) {
     return (
       <div>
-      <Parallax small filter image={require("assets/img/dog.jpg")} />
+      <Parallax small filter image={require(`assets/img/dog3.jpg`)} />
         <div className={classes.container}>
           <GridContainer justify="center">
             <GridItem xs={12} sm={12} md={6}>
               <div className={classes.profile}>
                 <div>
-                  <img src={profile} alt="..." className={imageClasses} />
+                  <img src={profile[Math.floor(Math.random() * 9) + 1]} alt="..." className={imageClasses} />
                 </div>
                 <div className={classes.name}>
                   <h3 className={classes.title}>{matchedUser.name}</h3>
