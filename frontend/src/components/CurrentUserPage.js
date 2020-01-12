@@ -56,7 +56,7 @@ class CurrentUserPage extends React.Component {
   }
 
   submitHandler = (user_id) => {
-    alert("Your profile has been updated")
+    alert("Your Profile has been updated")
     this.props.updateUser(user_id, this.state)
   }
 

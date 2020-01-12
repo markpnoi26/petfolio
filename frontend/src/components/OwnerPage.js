@@ -3,41 +3,45 @@ import classNames from "classnames";
 import {Link} from 'react-router-dom'
 import combineStyles from 'assets/combine-function/combineStyles'
 // @material-ui/core components
-import { withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 
 // @material-ui/icons
 import Face from "@material-ui/icons/Face";
 import Explore from "@material-ui/icons/Explore";
 import Pets from "@material-ui/icons/Pets";
-import Chat from "@material-ui/icons/Chat";
-import Build from "@material-ui/icons/Build";
+import Email from "@material-ui/icons/Email"
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import CustomTabs from "components/CustomTabs/CustomTabs.js";
 import Parallax from "components/Parallax/Parallax.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
 
 import profile from "assets/img/admin.jpg";
 
 import stylesA from "assets/jss/material-kit-react/views/componentsSections/tabsStyle.js";
 import stylesB from "assets/jss/material-kit-react/views/profilePage.js";
 
+const combinedStyles = combineStyles(stylesA, stylesB);
+const useStyles = makeStyles(combinedStyles)
 
-class OwnerPage extends React.Component {
 
-  render() {
+export default function OwnerPage(props) {
+  console.log(props)
 
-    const {classes} = this.props;
-    const {currentUser} = this.props
+  const classes = useStyles();
 
-    const imageClasses = classNames(
-      classes.imgRaised,
-      classes.imgRoundedCircle,
-      classes.imgFluid
-    );
+  const imageClasses = classNames(
+    classes.imgRaised,
+    classes.imgRoundedCircle,
+    classes.imgFluid
+  );
 
-    console.log(this.props)
+  const matchId = props.match.params.id
+  const matchedUser = props.users.find(user => user.id === parseInt(matchId, 10) )
+  console.log(matchedUser)
+
+
+  if (matchedUser) {
     return (
       <div>
       <Parallax small filter image={require("assets/img/dog.jpg")} />
@@ -49,7 +53,7 @@ class OwnerPage extends React.Component {
                   <img src={profile} alt="..." className={imageClasses} />
                 </div>
                 <div className={classes.name}>
-                  <h3 className={classes.title}>{currentUser.name}</h3>
+                  <h3 className={classes.title}>{matchedUser.name}</h3>
                 </div>
               </div>
             </GridItem>
@@ -67,7 +71,16 @@ class OwnerPage extends React.Component {
                       tabIcon: Face,
                       tabContent: (
                         <p className={classes.textCenter}>
-                          {currentUser.about_me}
+                          {matchedUser.about_me}
+                        </p>
+                      )
+                    },
+                    {
+                      tabName: "Email",
+                      tabIcon: Email,
+                      tabContent: (
+                        <p className={classes.textCenter}>
+                          {matchedUser.email}
                         </p>
                       )
                     },
@@ -76,7 +89,7 @@ class OwnerPage extends React.Component {
                       tabIcon: Explore,
                       tabContent: (
                         <p className={classes.textCenter}>
-                          {currentUser.current_address}
+                          {matchedUser.current_address}
                         </p>
                       )
                     },
@@ -94,7 +107,21 @@ class OwnerPage extends React.Component {
                       tabIcon: Pets,
                       tabContent: (
                         <ul className={classes.textCenter}>
-                          {currentUser.pets.map(pet => <Link key={pet.id} to={`/pets/${pet.id}`}><li >{pet.name}</li></Link>)}
+                          {matchedUser.pets.map(pet => {
+                            return(
+                              <div key={pet.id} className={classes.container}>
+                                <GridContainer justify="flex-start">
+                                  <GridItem>
+                                    <Link to={`/pets/${pet.id}`}>
+                                      <h5>
+                                        Name: <strong> {pet.name} </strong> - Breed: <strong> {pet.animal_type} </strong>
+                                      </h5>
+                                    </Link>
+                                  </GridItem>
+                                </GridContainer>
+                              </div>
+                            )
+                          })}
                         </ul>
                       )
                     }
@@ -106,12 +133,14 @@ class OwnerPage extends React.Component {
         </div>
       </div>
     );
+  } else {
+    return(
+      <div>Loading Users... </div>
+    )
   }
+
 
 
 }
 
 // this approach combines both styles to accomplish the goal from template.
-const combinedStyles = combineStyles(stylesA, stylesB);
-
-export default withStyles(combinedStyles)(OwnerPage);
