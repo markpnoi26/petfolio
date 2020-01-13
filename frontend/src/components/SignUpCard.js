@@ -60,7 +60,7 @@ class SignUpCard extends React.Component {
 
   signUpClick = () => {
     if (this.state.name === "admin" && this.state.email === "admin" && this.state.password === "admin" && this.state.passwordConfirm === "admin") {
-      this.props.logIn()
+      this.props.getCurrentUser()
     }
     this.setState({
       name: "",

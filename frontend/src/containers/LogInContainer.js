@@ -12,7 +12,7 @@ class LogInContainer extends React.Component {
     return(
       <div>
         <LogInCard {...this.props}/>
-        <SignUpCard logIn={this.props.logIn} />
+        <SignUpCard {...this.props} />
       </div>
     )
   }
@@ -22,7 +22,6 @@ class LogInContainer extends React.Component {
 const mapDispatchToProps = dispatch => {
   return {
     getCurrentUser: () => dispatch(getCurrentUser())
-
   }
 }
 
