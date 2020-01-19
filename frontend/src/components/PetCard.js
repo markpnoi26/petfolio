@@ -16,15 +16,6 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-// function clickHandler() {
-//   let favorite = document.getElementById("favorite")
-//   if (favorite.innerHTML === "favorite") {
-//     favorite.innerHTML = "favorited"
-//   } else {
-//     favorite.innerHTML = "favorite"
-//   }
-// }
-
 export default function PetCard(props) {
   const classes = useStyles();
 
