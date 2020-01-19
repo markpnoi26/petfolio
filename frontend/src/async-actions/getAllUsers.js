@@ -11,5 +11,4 @@ export default function getAllUsers() {
         dispatch({type: "SUCCESS"})
       })
   }
-
 }

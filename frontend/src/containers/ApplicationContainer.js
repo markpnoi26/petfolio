@@ -51,7 +51,7 @@ class ApplicationContainer extends React.Component {
         </div>
       </Router>
     )
-  }ee
+  }
 
 }
 

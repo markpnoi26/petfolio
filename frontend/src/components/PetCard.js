@@ -2,6 +2,7 @@ import React from "react";
 import {Link} from 'react-router-dom'
 // material-ui components
 import { makeStyles } from "@material-ui/core/styles";
+// import { withStyles } from "@material-ui/core/styles";
 // core components
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
@@ -14,6 +15,15 @@ const styles = {
 };
 
 const useStyles = makeStyles(styles);
+
+// function clickHandler() {
+//   let favorite = document.getElementById("favorite")
+//   if (favorite.innerHTML === "favorite") {
+//     favorite.innerHTML = "favorited"
+//   } else {
+//     favorite.innerHTML = "favorite"
+//   }
+// }
 
 export default function PetCard(props) {
   const classes = useStyles();
