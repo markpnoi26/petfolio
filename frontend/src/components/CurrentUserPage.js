@@ -36,6 +36,7 @@ class CurrentUserPage extends React.Component {
       about_me: props.currentUser.about_me,
       current_address: props.currentUser.current_address,
       pet_name: "",
+      pet_breed: "",
       pet_care: ""
     }
   }
@@ -58,6 +59,12 @@ class CurrentUserPage extends React.Component {
     })
   }
 
+  petBreedChange = event => {
+    this.setState({
+      pet_breed: event.target.value
+    })
+  }
+
   petCareChange = event => {
     this.setState({
       pet_care: event.target.value
@@ -66,9 +73,10 @@ class CurrentUserPage extends React.Component {
 
   onClickHandler = (user_id) => {
     alert("You have Added a Pet!")
-    this.props.addPet(user_id, {pet_name: this.state.pet_name, pet_care: this.state.pet_care})
+    this.props.addPet(user_id, {pet_name: this.state.pet_name, pet_care: this.state.pet_care, pet_breed: this.state.pet_breed})
     this.setState({
       pet_name: "",
+      pet_breed: "",
       pet_care: ""
     })
   }
@@ -182,6 +190,17 @@ class CurrentUserPage extends React.Component {
                             inputProps={{
                               value: this.state.pet_name,
                               onChange: this.petNameChange
+                            }}
+                          />
+                          <CustomInput
+                            labelText="Pet Breed"
+                            id="pet_breed"
+                            formControlProps={{
+                              fullWidth: true
+                            }}
+                            inputProps={{
+                              value: this.state.pet_breed,
+                              onChange: this.petBreedChange
                             }}
                           />
                           <CustomInput

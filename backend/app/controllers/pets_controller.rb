@@ -12,7 +12,7 @@ class PetsController < ApplicationController
 
   def create
     # puts(params)
-    pet = Pet.create(name: params[:pet_info][:pet_name], age: Faker::Number.number(digits: 1), animal_type: Faker::Creature::Dog.breed, pet_care: params[:pet_info][:pet_care], user_id: params[:user_id])
+    pet = Pet.create(name: params[:pet_info][:pet_name], age: Faker::Number.number(digits: 1), animal_type: params[:pet_info][:pet_breed], pet_care: params[:pet_info][:pet_care], user_id: params[:user_id])
 
     render json: pet, include: [:user]
   end
