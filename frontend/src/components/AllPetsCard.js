@@ -58,7 +58,7 @@ class AllPetsCard extends React.Component {
                 inputProps={{
                   onChange: this.changeHandler,
                   value: this.state.searchBar,
-                  placeholder: "Search Pet by Name...",
+                  placeholder: "Search Pet by Breed...",
                   type: "text",
                   endAdornment: (
                     <InputAdornment position="end">
