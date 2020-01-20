@@ -38,7 +38,7 @@ class AllPetsCard extends React.Component {
   }
 
   changeHandler = event => {
-    let filtered = this.props.pets.filter(pet => pet.animal_type.startsWith(event.target.value))
+    let filtered = this.props.pets.filter(pet => pet.animal_type.toLowerCase().startsWith(event.target.value.toLowerCase()))
     this.setState({
       searchBar: event.target.value,
       searchedPet: filtered

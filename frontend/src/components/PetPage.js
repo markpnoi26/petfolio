@@ -22,7 +22,7 @@ import stylesB from "assets/jss/material-kit-react/views/profilePage.js";
 // async-actions
 
 
-class CurrentUserPage extends React.Component {
+class CurrentPetPage extends React.Component {
 
   constructor(props) {
     super(props)
@@ -155,4 +155,4 @@ class CurrentUserPage extends React.Component {
 // this approach combines both styles to accomplish the goal from template.
 const combinedStyles = combineStyles(stylesA, stylesB);
 
-export default withStyles(combinedStyles)(CurrentUserPage);
+export default withStyles(combinedStyles)(CurrentPetPage);

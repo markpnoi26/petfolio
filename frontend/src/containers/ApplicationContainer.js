@@ -60,7 +60,7 @@ const mapDispatchToProps = dispatch => {
   return {
     logOut: () => dispatch({type: "LOG_OUT"}),
     updateUser: (user_id, formData) => dispatch(updateUser(user_id, formData)),
-    addPet: user_id => dispatch(addPet(user_id)),
+    addPet: (user_id, pet_info)=> dispatch(addPet(user_id, pet_info)),
     deletePet: id => dispatch(deletePet(id)),
     getAllUsers: () => dispatch(getAllUsers()),
     getAllPets: () => dispatch(getAllPets())

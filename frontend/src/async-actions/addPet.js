@@ -1,9 +1,12 @@
-export default function addPet(user_id) {
+export default function addPet(user_id, pet_info) {
   return (dispatch) => {
     dispatch({type: "FETCH"})
+
     let formData = {
-      user_id: user_id
+      user_id: user_id,
+      pet_info: pet_info
     }
+
     let configObj = {
       method: "POST",
       headers: {

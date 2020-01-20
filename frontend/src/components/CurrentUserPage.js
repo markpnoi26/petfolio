@@ -35,6 +35,8 @@ class CurrentUserPage extends React.Component {
     this.state={
       about_me: props.currentUser.about_me,
       current_address: props.currentUser.current_address,
+      pet_name: "",
+      pet_care: ""
     }
   }
 
@@ -50,9 +52,25 @@ class CurrentUserPage extends React.Component {
     })
   }
 
+  petNameChange = event => {
+    this.setState({
+      pet_name: event.target.value
+    })
+  }
+
+  petCareChange = event => {
+    this.setState({
+      pet_care: event.target.value
+    })
+  }
+
   onClickHandler = (user_id) => {
     alert("You have Added a Pet!")
-    this.props.addPet(user_id)
+    this.props.addPet(user_id, {pet_name: this.state.pet_name, pet_care: this.state.pet_care})
+    this.setState({
+      pet_name: "",
+      pet_care: ""
+    })
   }
 
   submitHandler = (user_id) => {
@@ -154,9 +172,36 @@ class CurrentUserPage extends React.Component {
                       tabName: "Add Pet",
                       tabIcon: Add,
                       tabContent: (
-                        <ul className={classes.textCenter}>
-                          <Button onClick={() => this.onClickHandler(this.props.currentUser.id)} round color='primary'>Add Random Pet</Button>
-                        </ul>
+                        <div>
+                          <CustomInput
+                            labelText="Pet Name"
+                            id="pet_name"
+                            formControlProps={{
+                              fullWidth: true
+                            }}
+                            inputProps={{
+                              value: this.state.pet_name,
+                              onChange: this.petNameChange
+                            }}
+                          />
+                          <CustomInput
+                            labelText="Pet Care Instructions"
+                            id="pet_care"
+                            formControlProps={{
+                              fullWidth: true,
+                              className: classes.textArea
+                            }}
+                            inputProps={{
+                              value: this.state.pet_care,
+                              onChange: this.petCareChange,
+                              multiline: true,
+                              rows: 5
+                            }}
+                          />
+                          <ul className={classes.textCenter}>
+                            <Button onClick={() => this.onClickHandler(this.props.currentUser.id)} round color='primary'>Add Pet</Button>
+                          </ul>
+                        </div>
                       )
                     },
                     {
