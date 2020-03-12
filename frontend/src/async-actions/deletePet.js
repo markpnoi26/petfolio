@@ -11,6 +11,10 @@ export default function deletePet(id) {
       .then(pets => {
         dispatch({type: "SUCCESS"})
       })
+      .catch(error => {
+        console.log(error)
+        dispatch({type: "FAILURE"})
+      })
   }
 
 }

@@ -10,6 +10,10 @@ export default function getAllPets() {
       .then(allPets => {
         dispatch({type: "SUCCESS"})
       })
+      .catch(error => {
+        console.log(error)
+        dispatch({type: "FAILURE"})
+      })
   }
 
 }

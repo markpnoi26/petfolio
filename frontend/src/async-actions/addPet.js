@@ -24,6 +24,10 @@ export default function addPet(user_id, pet_info) {
       .then(pet => {
         dispatch({type: "SUCCESS"})
       })
+      .catch(error => {
+        console.log(error)
+        dispatch({type: "FAILURE"})
+      })
   }
 
 }

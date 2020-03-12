@@ -10,5 +10,9 @@ export default function getAllUsers() {
       .then(allUsers => {
         dispatch({type: "SUCCESS"})
       })
+      .catch(error => {
+        console.log(error)
+        dispatch({type: "FAILURE"})
+      })
   }
 }

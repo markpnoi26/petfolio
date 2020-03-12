@@ -11,6 +11,10 @@ export default function getCurrentUser(id = 1) {
         dispatch({type: "SUCCESS"})
         dispatch({type: 'LOG_IN'})
       })
+      .catch(error => {
+        console.log(error)
+        dispatch({type: "FAILURE"})
+      })
   }
 
 }

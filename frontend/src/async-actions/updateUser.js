@@ -21,6 +21,10 @@ export default function updateUser(user_id, formData) {
         })
         dispatch({type: 'SUCCESS'})
       })
+      .catch(error => {
+        console.log(error)
+        dispatch({type: "FAILURE"})
+      })
   }
 
 }
