@@ -7,7 +7,7 @@ export default function getCurrentUser(id = 1) {
         dispatch({type: 'SET_CURRENT_USER', payload: currentUser})
         return currentUser
       })
-      .then(currentUser => {
+      .then(() => {
         dispatch({type: "SUCCESS"})
         dispatch({type: 'LOG_IN'})
       })
