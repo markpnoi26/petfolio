@@ -8,7 +8,7 @@ export default function deletePet(id) {
         dispatch({type: 'SET_ALL_PETS', payload: pets})
         return pets
       })
-      .then(pets => {
+      .then(() => {
         dispatch({type: "SUCCESS"})
       })
       .catch(error => {
