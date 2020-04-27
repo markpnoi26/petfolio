@@ -21,7 +21,7 @@ export default function addPet(user_id, pet_info) {
         dispatch({type: "ADD_PET", payload: pet})
         return pet
       })
-      .then(pet => {
+      .then(() => {
         dispatch({type: "SUCCESS"})
       })
       .catch(error => {
