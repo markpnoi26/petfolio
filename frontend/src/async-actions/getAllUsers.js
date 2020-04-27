@@ -7,7 +7,7 @@ export default function getAllUsers() {
         dispatch({type: 'SET_ALL_USERS', payload: allUsers})
         return allUsers
       })
-      .then(allUsers => {
+      .then(() => {
         dispatch({type: "SUCCESS"})
       })
       .catch(error => {
