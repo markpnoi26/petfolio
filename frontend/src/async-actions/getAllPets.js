@@ -7,7 +7,7 @@ export default function getAllPets() {
         dispatch({type: 'SET_ALL_PETS', payload: allPets})
         return allPets
       })
-      .then(allPets => {
+      .then(() => {
         dispatch({type: "SUCCESS"})
       })
       .catch(error => {
